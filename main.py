@@ -29,7 +29,7 @@ dining_hall.description  = "A long room with a high ceiling, "
 dining_hall.description += "but the table and chairs are missing."
 
 outdoors = Room("outdoors")
-outdoors.description = "Outside of the grand front door of the castle."
+outdoors.description = "Outside the grand front door of the castle."
 
 print("There are " + str(Room.number_of_rooms) + " rooms to explore.")
 
@@ -40,18 +40,18 @@ ballroom.link_room(dining_hall, "east")
 
 
                                                                 # Items
-sword = Item("a sword")
-sword.description = "The blade is blackened and blunt."
-kitchen.contents.append(sword)
+axe = Item("an axe")
+axe.description = "the blade is blackened and blunt."
+kitchen.contents.append(axe)
 
 key = Item("a key")
-key.description = "A tiny silver key on a large silky tassel." 
+key.description = "a tiny silver key on a large silky tassel." 
 
 biscuit = Item("a biscuit")
-biscuit.description = "Round, crisp, smelling of ginger."
+biscuit.description = "round, crisp, smelling of ginger."
 
 cheese = Item("some cheese")
-cheese.description = "Tasty cheddar cheese"
+cheese.description = "tasty cheddar cheese"
 kitchen.contents.append(cheese)
 
 
@@ -64,7 +64,7 @@ dining_hall.character = dave
 
 alys = Enemy("Alys", "A skeleton with glowing blue eyes")
 alys.conversation = "I'm going to destroy you."
-alys.weakness = "sword"
+alys.weakness = "axe"
 outdoors.character = alys
 
 holly = Friend("Holly", "A small fluffy dog.")
@@ -81,12 +81,15 @@ current_room = kitchen
 backpack = []
 dead = False
 game_won = False
+command = None
 
 
 
 
                                                                 # start game loop
 while not dead and not game_won:
+    if command not in ["north", "n", "south", "s", "east", "e", "west", "w"]:
+        input("...")
     print("\n")
     inhabitant = current_room.character
     current_room.display_details()
@@ -187,6 +190,7 @@ while not dead and not game_won:
             if chosen_Item in current_room.contents:
                 current_room.contents.remove(chosen_Item)
                 backpack.append(chosen)
+                print("Got it.")
                 if chosen == "key":
                     print("You try the key in the large door, and it opens.")
                     ballroom.description = "A vast room with a shining floor. " + "\n" + \

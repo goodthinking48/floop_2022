@@ -72,7 +72,7 @@ class Enemy(Character):
         
     def rob(self):
         if self._owns == None:
-            print(self.name + "has nothing to steal.")
+            print(self.name + " has nothing to steal.")
             return None
         else:
             print("You sneek behind " + self.name +

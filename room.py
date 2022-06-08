@@ -28,7 +28,7 @@ class Room():
         if len(self.contents) > 0:
             for each in self.contents:
                 print("You see " + each.short_description + ": " + each.description)
-        print()
+            print()
         if self.character is not None:
             self.character.describe()
             print()
